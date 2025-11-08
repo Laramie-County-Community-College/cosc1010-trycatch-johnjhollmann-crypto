@@ -25,6 +25,47 @@ Exception: Negative step count entered.
 '''
 
 # Define your method here
+def steps_to_miles(steps):
+    """
+    Converts a number of steps to miles walked, assuming 2000 steps equals 1 mile.
 
-if __name__ == '__main__':
-    # Type your code here.
+    Args:
+        steps: The number of steps taken.
+
+    Returns:
+        The distance walked in miles.
+
+    Raises:
+        ValueError: If the number of steps is negative.
+    """
+    if steps < 0:
+        raise ValueError("Exception: Negative step count entered.")
+    # The problem statement specifies 2000 steps = 1 mile
+    miles = steps / 2000.0
+    return miles
+
+def main():
+    """
+    Reads steps from the user, calls steps_to_miles, and prints the result or error message.
+    """
+    try:
+        # Read input from the user
+        steps_input = input("Enter the number of steps: ")
+        # Convert the input string to an integer
+        steps = int(steps_input)
+        
+        # Call the steps_to_miles function
+        miles_walked = steps_to_miles(steps)
+        
+        # Output the result formatted to two decimal places
+        print(f'{miles_walked:.2f}')
+        
+    except ValueError as excpt:
+        # Catch the ValueError from steps_to_miles or an invalid integer conversion
+        print(excpt)
+    except Exception as excpt:
+        # Catch any other potential exceptions
+        print(f"An unexpected error occurred: {excpt}")
+
+if __name__ == "__main__":
+    main()
